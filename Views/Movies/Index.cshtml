@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MovieWeb.Data.ApiClasses.MovieJsonMap>
+
+@*Define viewData*@
+
+@{
+	ViewData["Title"] = "List of Movies";
+}
+
+@*Write code*@
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title text-truncate">
+                                    @item.title
+                                    <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cursor-pointer row-md-6 bg-image hover-overlay hover-zoom hover-shadow ripple">
+                        <img src="@item.backdrop_path" width="90%" alt="@item.title">
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(57, 192, 237, 0.2)"></div>
+                        </a>
+                    </div>
+                    <div class="row-md-6">
+                        <div class="card-body">
+                            <p class="card-text text-truncate">@item.overview</p>
+                            @*<p class="card-text"><b>Cinema: </b>@item.</p>*@
+                            <p class="card-text"><b>Category: </b>@item.genres.ElementAt(0).name</p>
+                            <p class="card-text"><b>Release Date: </b>@item.release_date</p>
+                            <p class="card-text"><b>Popularity: </b>@item.popularity %</p>
+                            <p class="card-text ">
+                                <b>Status: </b>
+                                    <span class="badge bg-success text-white">@item.status</span>
+                                @*@if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+                                {
+                                    <span class="badge bg-success text-white">AVAILABLE</span>
+                                }
+                                else if (DateTime.Now > item.EndDate)
+                                {
+                                    <span class="badge bg-danger text-white">EXPIRED</span>
+                                } else
+                                {
+                                <span class="badge bg-primary text-white">UPCOMING</span>
+                                }*@
+                            </p>
+                            </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.id">
+                                    <i class="bi bi-eye-fill"></i> Show Details
+                                </a>
+                                <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i>Watch</a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
