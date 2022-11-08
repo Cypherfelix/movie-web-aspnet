@@ -8,7 +8,7 @@ namespace MovieWeb.Data
 
 
         public List<MovieJsonMap> myMovies = new();
-        private static AppDbInitializer instance;
+        private static AppDbInitializer? instance;
 
         public AppDbInitializer()
         {
@@ -71,10 +71,10 @@ namespace MovieWeb.Data
         public async Task Seed(IApplicationBuilder app)
         {
             Console.WriteLine("Here");
-            MoviesResultJsonMap list = await FetchMovies("/trending/all/week?api_key=");
+            MoviesResultJsonMap? list = await FetchMovies("/trending/all/week?api_key=");
 
-            List<MovieResult> mr = list.results;
-            for (int i = 0; i < mr.Count; i++)
+            List<MovieResult>? mr = list?.results;
+            for (int i = 0; i < mr?.Count; i++)
             {
                 MovieResult m = mr.ElementAt(i);
                 MovieJsonMap mo = await FetchMovie(m);

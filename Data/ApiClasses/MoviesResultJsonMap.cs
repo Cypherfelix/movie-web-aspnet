@@ -77,7 +77,7 @@
             get; set;
         }
 
-        public string media_type
+        public string? media_type
         {
             get; set;
         }

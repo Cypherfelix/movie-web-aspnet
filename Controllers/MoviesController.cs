@@ -19,7 +19,7 @@ namespace MovieWeb.Controllers
         }
 
         //GET: Movies/Details/1
-        public async Task<IActionResult> Details(int id)
+        public IActionResult Details(int id)
         {
             var movieDetail = _appDbInitializer.GetMovieById(id);
             return View(movieDetail);

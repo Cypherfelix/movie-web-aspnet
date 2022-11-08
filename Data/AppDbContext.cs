@@ -25,9 +25,9 @@ namespace MovieWeb.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Providers> providers { get; set; }
-        public DbSet<Provider_Movie> providerMovie { get; set; }
+        public DbSet<Movie>? Movies { get; set; }
+        public DbSet<Providers>? providers { get; set; }
+        public DbSet<Provider_Movie>? providerMovie { get; set; }
 
     }
 }
